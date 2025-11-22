@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Facebook</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-box">
+            <h1>Sign Up</h1>
+            <p>It's quick and easy.</p>
+            <form id="signup-form">
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="text" id="firstName" placeholder="First Name" required>
+                    <input type="text" id="lastName" placeholder="Last Name" required>
+                </div>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="New Password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <div id="error-message"></div>
+            <a href="../Login/login.html">Already have an account?</a>
+        </div>
+    </div>
+    <script src="signup.js"></script>
+</body>
+</html>
