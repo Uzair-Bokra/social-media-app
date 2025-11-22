@@ -10,6 +10,8 @@ signupForm.addEventListener('submit', (e) => {
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
+    const profilePictureInput = document.getElementById('profile-picture');
+    const profilePictureFile = profilePictureInput.files[0]; // Get the selected file
 
     if (!username || !firstName || !lastName || !email || !password || !confirmPassword) {
         errorMessage.textContent = 'All fields are required.';
@@ -29,14 +31,43 @@ signupForm.addEventListener('submit', (e) => {
         }
     }
 
-    const user = {
-        username,
-        firstName,
-        lastName,
-        email,
-        password
-    };
+    // Handle profile picture
+    if (profilePictureFile) {
+        // Basic file size validation (e.g., 2MB limit)
+        if (profilePictureFile.size > 2 * 1024 * 1024) { // 2MB
+            errorMessage.textContent = 'Profile picture must be less than 2MB.';
+            return;
+        }
 
-    localStorage.setItem('auth_user', JSON.stringify(user));
-    window.location.href = '../Login/login.html';
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const profilePictureBase64 = event.target.result;
+
+            const user = {
+                username,
+                firstName,
+                lastName,
+                email,
+                password,
+                profilePictureBase64 // Store Base64 string
+            };
+
+            localStorage.setItem('auth_user', JSON.stringify(user));
+            window.location.href = '../Login/login.html';
+        };
+        reader.readAsDataURL(profilePictureFile); // Read file as Base64
+    } else {
+        // If no profile picture is selected
+        const user = {
+            username,
+            firstName,
+            lastName,
+            email,
+            password,
+            profilePictureBase64: null // No profile picture
+        };
+
+        localStorage.setItem('auth_user', JSON.stringify(user));
+        window.location.href = '../Login/login.html';
+    }
 });

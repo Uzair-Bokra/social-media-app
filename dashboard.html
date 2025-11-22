@@ -3,12 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Media App</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="welcome-message">Welcome!</div>
+                <title>Social Media App</title>
+                <link rel="stylesheet" href="style.css">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            </head>
+            <body>
+                <header class="navbar">
+                    <div class="navbar-brand">SocialApp</div>
+                    <div class="search-sort-filter">
+                        <input type="text" id="search-input" placeholder="Search posts...">
+                        <select id="sort-by">
+                            <option value="latest">Latest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="likes">Most Liked</option>
+                        </select>
+                    </div>
+                    <div class="navbar-actions">
+                        <button id="theme-toggle-button" class="btn">
+                            <i class="fas fa-sun"></i> <!-- Default to sun icon for light mode -->
+                        </button>
+                        <button id="logout-button" class="btn">Logout</button>
+                    </div>    </header>
+
+    <main class="container">
+        <section class="create-post-section card">
+            <textarea id="post-text" placeholder="What's on your mind?"></textarea>
+            <input type="text" id="post-image-url" placeholder="Image URL (optional)">
+            <button id="post-button" class="btn primary">Post</button>
+        </section>
+
+        <section class="posts-feed">
+            <!-- Posts will be loaded here by JavaScript -->
+        </section>
+    </main>
+
     <script src="app.js"></script>
+    <script src="dashboard.js"></script>
+
+    <!-- Edit Post Modal -->
+    <div id="edit-post-modal" class="modal">
+        <div class="modal-content card">
+            <h2>Edit Post</h2>
+            <textarea id="edit-post-text"></textarea>
+            <input type="text" id="edit-post-image-url" placeholder="Image URL (optional)">
+            <div class="modal-actions">
+                <button id="save-edit-button" class="btn primary">Save Changes</button>
+                <button id="cancel-edit-button" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
