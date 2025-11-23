@@ -1,4 +1,8 @@
 /* General Styling & Variables */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 :root {
     /* Light Theme */
     --bg-color: #f0f2f5;
@@ -41,14 +45,16 @@
     --shadow-strong: rgba(0, 0, 0, 0.6);
 }
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100vh;
 }
 
 body {
     height: 100vh;
-    font-family: 'Roboto', sans-serif; /* Modern, readable font */
+    font-family: 'Roboto', sans-serif;
+    /* Modern, readable font */
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
@@ -64,6 +70,7 @@ body {
 
 .container {
     width: 100%;
+
     max-width: 800px;
     margin: 20px auto;
     padding: 0 15px;
@@ -71,11 +78,11 @@ body {
 }
 
 /* Navbar */
-    .navbar {
-        width: 100%; /* Change from 95% to 100% */    height: 100px;
-    /* background-color: var(--navbar-bg); */
+.navbar {
+    width: 100%;
+    height: 100px;
     background-color: #0A66C2;
-    padding: 20px 20px;
+    padding: 20px; /* Adjusted padding for internal spacing */
     box-shadow: 0 2px 8px var(--shadow-light);
     display: flex;
     justify-content: space-between;
@@ -87,8 +94,9 @@ body {
 }
 
 .navbar-brand {
-    font-size: 28px;
-    font-weight: 700; /* Bold */
+    font-size: 40px;
+    font-weight: 700;
+    /* Bold */
     /* color: var(--primary-btn-bg); */
     color: white;
     letter-spacing: -0.5px;
@@ -102,9 +110,10 @@ body {
 
 #search-input,
 #sort-by {
-    padding: 10px 15px;
+    padding: 15px 50px;
     border: 1px solid var(--input-border);
-    border-radius: 25px; /* More rounded */
+    border-radius: 25px;
+    /* More rounded */
     font-size: 15px;
     background-color: var(--input-bg);
     color: var(--text-color);
@@ -120,7 +129,8 @@ body {
 #search-input:focus,
 #sort-by:focus {
     border-color: var(--primary-btn-bg);
-    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2); /* Focus glow */
+    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+    /* Focus glow */
 }
 
 .navbar-actions {
@@ -133,9 +143,10 @@ body {
 .btn {
     background-color: var(--primary-btn-bg);
     color: white;
-    padding: 10px 18px;
+    padding: 10px 30px;
     border: none;
-    border-radius: 20px; /* Consistent rounding */
+    border-radius: 20px;
+    /* Consistent rounding */
     cursor: pointer;
     font-size: 15px;
     font-weight: 600;
@@ -176,7 +187,8 @@ body {
 /* Card General Style */
 .card {
     background-color: var(--card-bg);
-    border-radius: 12px; /* More modern rounding */
+    border-radius: 12px;
+    /* More modern rounding */
     box-shadow: 0 4px 12px var(--shadow-medium);
     padding: 20px;
     margin-bottom: 20px;
@@ -265,7 +277,8 @@ body {
     gap: 12px;
     position: relative;
     padding-bottom: 10px;
-    border-bottom: 1px solid var(--border-color); /* Separator */
+    border-bottom: 1px solid var(--border-color);
+    /* Separator */
     margin-bottom: 10px;
 }
 
@@ -274,7 +287,8 @@ body {
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--primary-btn-bg); /* More prominent border */
+    border: 2px solid var(--primary-btn-bg);
+    /* More prominent border */
     flex-shrink: 0;
 }
 
@@ -285,7 +299,8 @@ body {
 }
 
 .post-author {
-    font-weight: 600; /* Slightly less bold */
+    font-weight: 600;
+    /* Slightly less bold */
     color: var(--text-color);
     font-size: 17px;
     line-height: 1.2;
@@ -298,26 +313,33 @@ body {
 }
 
 .post-options {
-    position: relative; /* For dropdown positioning */
-    margin-left: auto; /* Push to the far right */
-    z-index: 15; /* Ensure post options are above post content */
+    position: relative;
+    /* For dropdown positioning */
+    margin-left: auto;
+    /* Push to the far right */
+    z-index: 15;
+    /* Ensure post options are above post content */
 }
 
 .three-dots-button {
     background: none;
     border: none;
-    font-size: 24px; /* Larger icon */
+    font-size: 24px;
+    /* Larger icon */
     cursor: pointer;
     color: var(--secondary-text-color);
     padding: 8px;
     border-radius: 50%;
     transition: background-color 0.3s ease, color 0.3s ease;
-    font-weight: bold; /* Make the text bold */
+    font-weight: bold;
+    /* Make the text bold */
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative; /* Ensure it has its own stacking context */
-    z-index: 1; /* Keep button above dropdown when dropdown is open, might not be necessary depending on positioning */
+    position: relative;
+    /* Ensure it has its own stacking context */
+    z-index: 1;
+    /* Keep button above dropdown when dropdown is open, might not be necessary depending on positioning */
 }
 
 .three-dots-button:hover {
@@ -328,28 +350,34 @@ body {
 .dropdown-menu {
     display: none;
     position: absolute;
-    top: 100%; /* Position below the button */
+    top: 100%;
+    /* Position below the button */
     right: 0;
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 4px 12px var(--shadow-medium);
-    min-width: 150px; /* Wider */
+    min-width: 150px;
+    /* Wider */
     overflow: hidden;
-    z-index: 20; /* Ensure it's above other elements */
+    z-index: 20;
+    /* Ensure it's above other elements */
     flex-direction: column;
     padding: 5px 0;
-    transform: translateY(10px); /* Slight offset */
+    transform: translateY(10px);
+    /* Slight offset */
     opacity: 0;
     transition: transform 0.2s ease, opacity 0.2s ease;
-    pointer-events: none; /* Prevent interaction when hidden */
+    pointer-events: none;
+    /* Prevent interaction when hidden */
 }
 
 .dropdown-menu.active {
     display: flex;
     transform: translateY(0);
     opacity: 1;
-    pointer-events: auto; /* Allow interaction when active */
+    pointer-events: auto;
+    /* Allow interaction when active */
 }
 
 .dropdown-menu .btn {
@@ -363,8 +391,10 @@ body {
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
     border-radius: 0;
-    font-weight: normal; /* Override button bold */
-    pointer-events: auto; /* Explicitly enable pointer events for buttons inside */
+    font-weight: normal;
+    /* Override button bold */
+    pointer-events: auto;
+    /* Explicitly enable pointer events for buttons inside */
 }
 
 .dropdown-menu .btn:hover {
@@ -378,29 +408,36 @@ body {
 
 .post-content {
     font-size: 16px;
-    line-height: 1.6; /* Improved readability */
+    line-height: 1.6;
+    /* Improved readability */
     color: var(--text-color);
     margin-bottom: 10px;
-    word-wrap: break-word; /* Ensure long words break */
+    word-wrap: break-word;
+    /* Ensure long words break */
 }
 
 .post-content .see-more-button {
-    margin-top: 5px; /* Add slight margin above the button */
-    display: block; /* Ensure the button takes its own line */
-    text-align: left; /* Align the button to the left */
+    margin-top: 5px;
+    /* Add slight margin above the button */
+    display: block;
+    /* Ensure the button takes its own line */
+    text-align: left;
+    /* Align the button to the left */
 }
 
 .post-image {
     max-width: 100%;
     border-radius: 8px;
     margin-top: 5px;
-    display: block; /* Remove extra space below image */
+    display: block;
+    /* Remove extra space below image */
     height: auto;
 }
 
 .post-actions {
     display: flex;
-    justify-content: space-around; /* Distribute actions */
+    justify-content: space-around;
+    /* Distribute actions */
     align-items: center;
     border-top: 1px solid var(--border-color);
     padding-top: 10px;
@@ -415,7 +452,8 @@ body {
     font-size: 15px;
     display: flex;
     align-items: center;
-    gap: 8px; /* More space for icons and text */
+    gap: 8px;
+    /* More space for icons and text */
     padding: 8px 12px;
     border-radius: 6px;
     transition: background-color 0.2s ease, color 0.2s ease;
@@ -423,7 +461,8 @@ body {
 }
 
 .post-actions button i {
-    font-size: 18px; /* Icon size */
+    font-size: 18px;
+    /* Icon size */
 }
 
 .post-actions button:hover {
@@ -440,7 +479,8 @@ body {
     font-weight: bold;
     color: var(--text-color);
     font-size: 15px;
-    min-width: 60px; /* Ensure space for count */
+    min-width: 60px;
+    /* Ensure space for count */
     text-align: right;
 }
 
@@ -455,15 +495,22 @@ body {
 
 /* Edit/Create Modal Styling */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1001; /* Sit on top */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1001;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
     justify-content: center;
     align-items: center;
 }
@@ -475,7 +522,8 @@ body {
 .modal-content {
     background-color: var(--card-bg);
     padding: 30px;
-    border: none; /* Border replaced by shadow */
+    border: none;
+    /* Border replaced by shadow */
     border-radius: 12px;
     box-shadow: 0 8px 25px var(--shadow-strong);
     transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
@@ -539,7 +587,8 @@ body {
 }
 
 .file-upload-input {
-    display: none; /* Hide the actual file input */
+    display: none;
+    /* Hide the actual file input */
 }
 
 /* Media Queries for Responsiveness */
@@ -562,9 +611,11 @@ body {
         justify-content: center;
     }
 
-    #search-input, #sort-by {
+    #search-input,
+    #sort-by {
         flex-grow: 1;
         max-width: 48%;
+        padding: 10px 15px; /* Reduced horizontal padding for medium screens */
     }
 
     .navbar-actions {
@@ -595,29 +646,38 @@ body {
     }
 
     .post-author-info {
-        flex-basis: calc(100% - 60px); /* Account for pic and gap */
+        flex-basis: calc(100% - 60px);
+        /* Account for pic and gap */
     }
 
     .post-options {
-        position: relative; /* Keep relative for dropdown positioning */
+        position: relative;
+        /* Keep relative for dropdown positioning */
         margin-left: 0;
         width: 100%;
         text-align: right;
     }
 
     .dropdown-menu {
-        top: 100%; /* Position below the button */
+        top: 100%;
+        /* Position below the button */
         right: 0;
-        left: auto; /* Align to the right */
-        min-width: 150px; /* Maintain a reasonable width */
+        left: auto;
+        /* Align to the right */
+        min-width: 150px;
+        /* Maintain a reasonable width */
         width: auto;
-        max-width: calc(100vw - 20px); /* Ensure it doesn't overflow viewport */
+        max-width: calc(100vw - 20px);
+        /* Ensure it doesn't overflow viewport */
         transform: none;
-        box-shadow: 0 4px 12px var(--shadow-medium); /* Re-add shadow for better visibility */
-        border-radius: 8px; /* Re-add border-radius */
-        border-top: none; /* Remove border-top as it's not a full width item now */
+        box-shadow: 0 4px 12px var(--shadow-medium);
+        /* Re-add shadow for better visibility */
+        border-radius: 8px;
+        /* Re-add border-radius */
+        border-top: none;
+        /* Remove border-top as it's not a full width item now */
     }
-    
+
     .dropdown-menu.active {
         display: flex;
     }
@@ -634,7 +694,8 @@ body {
 
 @media (max-width: 480px) {
     .navbar {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column;
+        /* Stack items vertically */
         height: auto;
     }
 
@@ -643,38 +704,47 @@ body {
     }
 
     .search-sort-filter {
-        flex-direction: column; /* Stack search and sort inputs */
+        flex-direction: column;
+        /* Stack search and sort inputs */
         width: 100%;
     }
 
     #search-input,
     #sort-by {
-        max-width: 100%; /* Full width for inputs */
+        max-width: 100%;
+        /* Full width for inputs */
+        padding: 8px 10px; /* Further reduced horizontal padding for small screens */
     }
 
     .navbar-actions {
-        flex-direction: column; /* Stack action buttons */
+        flex-direction: column;
+        /* Stack action buttons */
         width: 100%;
         gap: 10px;
         margin-top: 10px;
     }
 
     .btn {
-        width: 100%; /* Full width for buttons */
+        width: 100%;
+        /* Full width for buttons */
     }
 
     .modal-content {
-        width: 90%; /* Take more width on smaller screens */
+        width: 90%;
+        /* Take more width on smaller screens */
     }
 
     .post-author-info {
-        flex-basis: auto; /* Allow content to dictate width */
+        flex-basis: auto;
+        /* Allow content to dictate width */
     }
 
     .post-options {
-        position: relative; /* Keep relative for dropdown positioning */
+        position: relative;
+        /* Keep relative for dropdown positioning */
         margin-left: auto;
-        width: auto; /* Adjust width */
+        width: auto;
+        /* Adjust width */
         text-align: right;
     }
 
@@ -682,10 +752,12 @@ body {
         top: 100%;
         right: 0;
         left: auto;
-        min-width: 120px; /* Slightly smaller min-width */
+        min-width: 120px;
+        /* Slightly smaller min-width */
         max-width: calc(100vw - 20px);
     }
 }
+
 .btn-link {
     background: none;
     border: none;
