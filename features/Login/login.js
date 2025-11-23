@@ -23,6 +23,7 @@ loginForm.addEventListener('submit', (e) => {
 
     if (user.email === email && user.password === password) {
         localStorage.setItem('auth_logged_in', 'true');
+        localStorage.removeItem('posts'); // Clear all previous posts for the new user
         window.location.href = '../../index.html';
     } else {
         errorMessage.textContent = 'Invalid email or password.';
