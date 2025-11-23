@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         renderPosts(postsToDisplay);
     };
 
+    const TRUNCATE_LENGTH = 150; // Define the character limit for truncation
+
     const renderPosts = (postsToRender) => {
         postsFeed.innerHTML = ''; // Clear current posts
         postsToRender.forEach(post => {
@@ -94,6 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const profilePicSrc = post.authorProfilePic || 'https://via.placeholder.com/40/CCCCCC/FFFFFF?text=AV'; // Generic avatar
             const postImageHtml = post.imageUrl ? `<img src="${post.imageUrl}" alt="Post Image" class="post-image">` : '';
 
+            let postTextContent = post.text;
+            let isTruncated = false;
+            let seeMoreButtonHtml = '';
+
+            if (post.text.length > TRUNCATE_LENGTH) {
+                postTextContent = post.text.substring(0, TRUNCATE_LENGTH) + '...';
+                isTruncated = true;
+                seeMoreButtonHtml = `<button class="see-more-button btn-link">${isTruncated ? 'See More' : 'See Less'}</button>`;
+            }
+            
             postCard.innerHTML = `
                 <div class="post-header">
                     <img src="${profilePicSrc}" alt="Profile Picture" class="post-author-pic">
@@ -109,7 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </div>
-                <p class="post-content">${post.text}</p>
+                <p class="post-content">
+                    <span class="full-text" style="display:${isTruncated ? 'none' : 'block'};">${post.text}</span>
+                    <span class="truncated-text" style="display:${isTruncated ? 'block' : 'none'};">${postTextContent}</span>
+                    ${seeMoreButtonHtml}
+                </p>
                 ${postImageHtml}
                 <div class="post-actions">
                     <button class="like-button ${post.liked ? 'liked' : ''}">
@@ -126,6 +142,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const dropdownMenu = postCard.querySelector('.dropdown-menu');
             const editButton = postCard.querySelector('.edit-button');
             const deleteButton = postCard.querySelector('.delete-button');
+            const seeMoreButton = postCard.querySelector('.see-more-button');
+
+            if (seeMoreButton) {
+                seeMoreButton.addEventListener('click', () => {
+                    const fullTextSpan = postCard.querySelector('.full-text');
+                    const truncatedTextSpan = postCard.querySelector('.truncated-text');
+
+                    if (fullTextSpan.style.display === 'none') {
+                        fullTextSpan.style.display = 'block';
+                        truncatedTextSpan.style.display = 'none';
+                        seeMoreButton.textContent = 'See Less';
+                    } else {
+                        fullTextSpan.style.display = 'none';
+                        truncatedTextSpan.style.display = 'block';
+                        seeMoreButton.textContent = 'See More';
+                    }
+                });
+            }
 
             threeDotsButton.addEventListener('click', (event) => {
                 event.stopPropagation(); // Prevent document click from immediately closing

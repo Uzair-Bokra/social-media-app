@@ -17,7 +17,19 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 90%; /* Make it responsive */
+    max-width: 400px; /* Keep a max-width */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 28px; /* Slightly smaller font for headings */
+    }
 }
 
 h1 {

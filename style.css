@@ -71,9 +71,8 @@ body {
 }
 
 /* Navbar */
-.navbar {
-    width: 95%;
-    height: 100px;
+    .navbar {
+        width: 100%; /* Change from 95% to 100% */    height: 100px;
     /* background-color: var(--navbar-bg); */
     background-color: #0A66C2;
     padding: 20px 20px;
@@ -381,8 +380,14 @@ body {
     font-size: 16px;
     line-height: 1.6; /* Improved readability */
     color: var(--text-color);
-    white-space: pre-wrap;
     margin-bottom: 10px;
+    word-wrap: break-word; /* Ensure long words break */
+}
+
+.post-content .see-more-button {
+    margin-top: 5px; /* Add slight margin above the button */
+    display: block; /* Ensure the button takes its own line */
+    text-align: left; /* Align the button to the left */
 }
 
 .post-image {
@@ -594,24 +599,23 @@ body {
     }
 
     .post-options {
-        position: static; /* Allow normal flow */
+        position: relative; /* Keep relative for dropdown positioning */
         margin-left: 0;
         width: 100%;
         text-align: right;
     }
 
     .dropdown-menu {
-        top: auto;
-        bottom: auto;
-        left: 0;
+        top: 100%; /* Position below the button */
         right: 0;
-        min-width: auto;
-        width: 100%;
-        transform: none; /* Remove transform for mobile */
-        opacity: 1; /* Always visible for simplicity on small screens or custom logic */
-        box-shadow: none;
-        border-radius: 0;
-        border-top: 1px solid var(--border-color);
+        left: auto; /* Align to the right */
+        min-width: 150px; /* Maintain a reasonable width */
+        width: auto;
+        max-width: calc(100vw - 20px); /* Ensure it doesn't overflow viewport */
+        transform: none;
+        box-shadow: 0 4px 12px var(--shadow-medium); /* Re-add shadow for better visibility */
+        border-radius: 8px; /* Re-add border-radius */
+        border-top: none; /* Remove border-top as it's not a full width item now */
     }
     
     .dropdown-menu.active {
@@ -626,4 +630,73 @@ body {
     .welcome-message {
         font-size: 36px;
     }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        height: auto;
+    }
+
+    .navbar-brand {
+        margin-bottom: 10px;
+    }
+
+    .search-sort-filter {
+        flex-direction: column; /* Stack search and sort inputs */
+        width: 100%;
+    }
+
+    #search-input,
+    #sort-by {
+        max-width: 100%; /* Full width for inputs */
+    }
+
+    .navbar-actions {
+        flex-direction: column; /* Stack action buttons */
+        width: 100%;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .btn {
+        width: 100%; /* Full width for buttons */
+    }
+
+    .modal-content {
+        width: 90%; /* Take more width on smaller screens */
+    }
+
+    .post-author-info {
+        flex-basis: auto; /* Allow content to dictate width */
+    }
+
+    .post-options {
+        position: relative; /* Keep relative for dropdown positioning */
+        margin-left: auto;
+        width: auto; /* Adjust width */
+        text-align: right;
+    }
+
+    .dropdown-menu {
+        top: 100%;
+        right: 0;
+        left: auto;
+        min-width: 120px; /* Slightly smaller min-width */
+        max-width: calc(100vw - 20px);
+    }
+}
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--primary-btn-bg);
+    cursor: pointer;
+    font-size: 15px;
+    padding: 0;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.btn-link:hover {
+    color: var(--primary-btn-hover);
 }
