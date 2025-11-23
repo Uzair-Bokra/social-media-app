@@ -23,7 +23,7 @@ loginForm.addEventListener('submit', (e) => {
 
     if (user.email === email && user.password === password) {
         localStorage.setItem('auth_logged_in', 'true');
-        window.location.href = '../../dashboard.html';
+        window.location.href = '../../index.html';
     } else {
         errorMessage.textContent = 'Invalid email or password.';
     }
